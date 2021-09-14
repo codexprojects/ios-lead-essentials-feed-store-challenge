@@ -76,7 +76,7 @@ public final class CoreDataFeedStore: FeedStore {
 }
 
 @objc(ManagedCache)
-internal class ManagedCache: NSManagedObject {
+final class ManagedCache: NSManagedObject {
 	@NSManaged var timestamp: Date
 	@NSManaged var feed: NSOrderedSet
 
@@ -97,7 +97,7 @@ internal class ManagedCache: NSManagedObject {
 }
 
 @objc(ManagedFeedImage)
-internal class ManagedFeedImage: NSManagedObject {
+final class ManagedFeedImage: NSManagedObject {
 	@NSManaged var id: UUID
 	@NSManaged var imageDescription: String?
 	@NSManaged var location: String?
@@ -110,7 +110,7 @@ internal class ManagedFeedImage: NSManagedObject {
 }
 
 extension ManagedFeedImage {
-	internal static func images(from localFeed: [LocalFeedImage], in context: NSManagedObjectContext) -> NSOrderedSet {
+	static func images(from localFeed: [LocalFeedImage], in context: NSManagedObjectContext) -> NSOrderedSet {
 		return NSOrderedSet(array: localFeed.map { local in
 			let managed = ManagedFeedImage(context: context)
 			managed.id = local.id
