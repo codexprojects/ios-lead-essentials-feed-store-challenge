@@ -102,7 +102,7 @@ final class ManagedFeedImage: NSManagedObject {
 	@NSManaged var imageDescription: String?
 	@NSManaged var location: String?
 	@NSManaged var url: URL
-	@NSManaged var cache: ManagedCache
+	@NSManaged var cache: ManagedCache?
 
 	var local: LocalFeedImage {
 		return LocalFeedImage(id: id, description: imageDescription, location: location, url: url)
